@@ -38,13 +38,9 @@ class StartFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(context, 2)
 
         viewModel.myGifList.observe(viewLifecycleOwner) { gifList ->
-            //gifs.clear()
+            gifs.clear()
             gifs.addAll(gifList)
             adapter.notifyDataSetChanged()
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getGif()
         }
 
         adapter.setOnItemClickListener(object : StartAdapter.OnItemClickListener {
@@ -61,4 +57,9 @@ class StartFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getGif()
+    }
 }
