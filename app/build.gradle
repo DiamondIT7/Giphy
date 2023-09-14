@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.giphy'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.giphy"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -25,6 +25,9 @@ android {
     }
     buildFeatures{
         viewBinding true
+    }
+    configurations.implementation {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -54,4 +57,17 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    // Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.2'
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    // ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0' // Replace with the latest version
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0' // Replace with the latest version
 }
